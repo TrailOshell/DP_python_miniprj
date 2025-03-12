@@ -1,3 +1,4 @@
+# MANDATORY
 - [x] Write a function
     - [x] that takes rows of a chessboard as arguments
     - [x] and checks if your King is "in check".

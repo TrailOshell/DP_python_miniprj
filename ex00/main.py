@@ -132,16 +132,7 @@ R...
 ..P.
 ....\
 """
-    print(board)
-    print(check_board(board))
     checkmate(board)
 
 if __name__ == "__main__":
     main()
-
-# try:
-#     if __name__ == "__main__":
-#         main()
-
-# except:
-#     print("ERROR")
