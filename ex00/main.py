@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Write a function they said. Not functions with an "S" so if someone want to play a strict guy then here you go. a function
+# If someone want to play a strict guy. Here's the "Write a function" without an "s"
 def checkmate(board):
     try:
         if 'K' not in board:
@@ -19,7 +19,7 @@ def checkmate(board):
             if c == '\n':
                 h += 1
                 if w != w_max:
-                    return f"ERROR: uneven board size (width {w} and width_max {w_max})"
+                    return f"ERROR: uneven board size (last width = {w}, max width = {w_max})"
                 w = 0
             else:
                 w += 1
@@ -132,17 +132,9 @@ R...
 ..P.
 ....\
 """
-    # print(board)
-    # print(check_board(board))
-    # checkmate(board)
-
-    board2 = """\
-....
-.K..
-....
-.Q..\
-"""
-    print(checkmate(board2))
+    print(board)
+    print(check_board(board))
+    checkmate(board)
 
 if __name__ == "__main__":
     main()
