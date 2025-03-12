@@ -10,7 +10,7 @@
     - [x] King.
 - [x] A piece can only capture the first possible piece that stands on its path.
 - [x] The board can be of different sizes but will remain a square.
-- [ ] There’s only one King
+- [x] There’s only one King
 - [x] All the characters that are not used to refer to pieces are considered as empty squares.
 - [x] The King is considered to be "in check" when an other enemy piece can capture it.  
     - [x] When it’s the case, you will print "Success" on the standard output followed by a newline
