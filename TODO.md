@@ -26,7 +26,6 @@
     - [ ] king mode: player survive as the lone king
     - [ ] king slayer: player use other pieces to checkmate the king
     - [ ] actual chess game: make a traditional chess game
-        - [ ] 
 
 # EXTRA
 - [ ] use '-' '|' '\' '/' to draw checkmate line
