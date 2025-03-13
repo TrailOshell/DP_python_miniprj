@@ -56,9 +56,9 @@ def checkmate(board):
     checkmate = step_check(dat)
 
     if checkmate == 1:
-        print_grid(dat)
+        print_board(dat)
         return print(colors.fg.green, "Success", colors.reset, sep="")
     elif checkmate == 0:
         return print(colors.fg.red, "Fail", colors.reset, sep="")
 # except:
-    return print("Error")
+    return print(f"{colors.fg.yellow}Error{colors.reset}")

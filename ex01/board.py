@@ -4,9 +4,9 @@ from color import colors
 
 def check_board(board):
     if 'K' not in board:
-        print("ERROR: 'K' not in board"); return 0, 0, False
+        print(f"{colors.fg.yellow}ERROR: 'K' not in board{colors.reset}"); return 0, 0, False
     elif board.count('K') > 1:
-        print("ERROR: multiple 'K' found"); return 0, 0, False
+        print(f"{colors.fg.yellow}ERROR: multiple 'K' found{colors.reset}"); return 0, 0, False
     
     w, h = 0, 0
     w_max, h_max = 0, 0
@@ -16,7 +16,7 @@ def check_board(board):
     for c in board:
         if c == '\n':
             if w != w_max:
-                print (f"ERROR: uneven board size (last width = {w}, max width = {w_max})")
+                print (f"{colors.fg.yellow}ERROR: uneven board size (last width = {w}, max width = {w_max}){colors.reset}")
                 return 0, 0, False
             h += 1; w = 0
         else: w += 1
@@ -57,17 +57,24 @@ def print_grid(dat):
     print('\n', end='')
 
 def print_board(dat):
-    arr, h_max = dat.arr, dat.h_max
+    arr, w_max, h_max = dat.arr, dat.w_max, dat.h_max
+    
     step = 0
-    for row in arr:
-        for c in row: print(color_char(c, near_check(dat, x, y)), end='')
-        print(f" {h_max - step}", end='')
-        print('\n', end='')
+    y = 0
+    while y < h_max:
+        x = 0
+        while x < w_max:
+            c = arr[y][x]
+            print(color_char(c, near_check(dat, x, y)), end='')
+            x += 1
+        print(f" {h_max - step}\n", end='')
+        y += 1
         step += 1
     step = 0
     for c in arr[0]:
-        print(f"{chr(ord('a') + step)}", end='')
+        print(f"{chr(ord('A') + step)}", end='')
         step += 1
+        if step == 26: step = 0
     print('\n', end='')
 
 def near_check(dat, cx, cy):
@@ -78,15 +85,27 @@ def near_check(dat, cx, cy):
             return True
 
     if arr[cy][cx] not in {'R', 'B', 'Q'}: return False
-    target = {'K', '-', '|'}
+    target = {'K', '-'}
     if arr[cy][cx] in {'R', 'Q'}:
-        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        for dx, dy in [(-1, 0), (1, 0)]:
             x, y = cx + dx, cy + dy
             if not (0 <= x < w_max and 0 <= y < h_max): continue
             if arr[y][x] in target: return True
-    target = {'K', '\\', '/'}
+    target = {'K', '|'}
+    if arr[cy][cx] in {'R', 'Q'}:
+        for dx, dy in [(0, -1), (0, 1)]:
+            x, y = cx + dx, cy + dy
+            if not (0 <= x < w_max and 0 <= y < h_max): continue
+            if arr[y][x] in target: return True
+    target = {'K', '\\'}
     if arr[cy][cx] in {'B', 'Q'}:
-        for dx, dy in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
+        for dx, dy in [(-1, -1), (1, 1)]:
+            x, y = cx + dx, cy + dy
+            if not (0 <= x < w_max and 0 <= y < h_max): continue
+            if arr[y][x] in target: return True
+    target = {'K', '/'}
+    if arr[cy][cx] in {'B', 'Q'}:
+        for dx, dy in [(1, -1), (-1, 1)]:
             x, y = cx + dx, cy + dy
             if not (0 <= x < w_max and 0 <= y < h_max): continue
             if arr[y][x] in target: return True

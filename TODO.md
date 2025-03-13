@@ -15,16 +15,16 @@
 - [x] The King is considered to be "in check" when an other enemy piece can capture it.  
     - [x] When it’s the case, you will print "Success" on the standard output followed by a newline
     - [x] otherwise you will print "Fail" followed by a newline.
-- [ ] Your function should never crash or loop indefinitely.
-- [ ] Whenever an undefiend behavior occurs you should return an error message or prints nothing and gives back control.
+- [x] Your function should never crash or loop indefinitely.
+- [x] Whenever an undefiend behavior occurs you should return an error message or prints nothing and gives back control.
 
 # BONUS
 - [x] read .chess file
 - [ ] "Create a program that takes the best move for a checkmate."
     - [ ] recursive is probably the way. let it loop and find shortest possible steps for checkmate
 - [ ] a chess game
-    - [ ] king mode: player survive as the lone king
     - [ ] king slayer: player use other pieces to checkmate the king
+    - [ ] king mode: player survive as the lone king
     - [ ] actual chess game: make a traditional chess game
 
 # EXTRA
