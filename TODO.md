@@ -21,7 +21,7 @@
 # BONUS
 - [x] read .chess file
 - [ ] "Create a program that takes the best move for a checkmate."
-    - [ ] recursive is probably the way. let it loop and find shortest possible steps for checkmate
+    - [ ] recursive is probably the way. let it loop and find shortest possible steps(or turns?) for checkmate
 - [ ] a chess game
     - [ ] king slayer: player use other pieces to checkmate the king
     - [ ] king mode: player survive as the lone king
