@@ -141,7 +141,9 @@ def near_check(arr, cx, cy, w_max, h_max):
 
 def color_char(char, check):
     color = colors.reset
-    if char in {'-', '|', '\\', '/'} or check == True: color = colors.fg.yellow
+    if char in {'-', '|', '\\', '/'} or check == True:
+        if char in {'P', 'R', 'B', 'Q'}: color = f"{colors.fg.yellow}{colors.bg.orange}"
+        else: color = colors.fg.yellow
     elif char == 'K': color = f"{colors.fg.black}{colors.bg.lightgrey}"
     elif char == 'P': color = f"{colors.fg.cyan}"
     elif char == 'R': color = f"{colors.fg.cyan}"
