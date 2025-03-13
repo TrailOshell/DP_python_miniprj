@@ -2,6 +2,7 @@
 
 import sys
 from checkmate import checkmate
+from color import colors
 
 def main():
     for fpath in sys.argv[1:]:
