@@ -19,7 +19,7 @@
 - [ ] Whenever an undefiend behavior occurs you should return an error message or prints nothing and gives back control.
 
 # BONUS
-- [ ] read .chess file
+- [x] read .chess file
 - [ ] "Create a program that takes the best move for a checkmate."
     - [ ] recursive is probably the way. let it loop and find shortest possible steps for checkmate
 - [ ] a chess game
@@ -28,9 +28,9 @@
     - [ ] actual chess game: make a traditional chess game
 
 # EXTRA
-- [ ] use '-' '|' '\' '/' to draw checkmate line
-- [ ] add color
-- [ ] grid name
+- [x] use '-' '|' '\' '/' to draw checkmate line
+- [x] add color
+- [x] grid name
     ... .. ....10
     ... .. ....9
     .         
