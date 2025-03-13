@@ -23,7 +23,8 @@ def check_board(board):
     h += 1; h_max = h
     return w_max, h_max, True
 
-def create_grid(board, w_max, h_max):
+def create_grid(board, dat):
+    w_max, h_max = dat.w_max, dat.h_max
     arr = [[0 for i in range(w_max)] for j in range(h_max)]
     k = [0, 0]; w, h = 0, 0
     for c in board:
@@ -35,14 +36,15 @@ def create_grid(board, w_max, h_max):
             w += 1
     return arr, k
 
-def print_grid(arr, w_max, h_max):
+def print_grid(dat):
+    arr, w_max, h_max = dat.arr, dat.w_max, dat.h_max
     step = 0
     y = 0
     while y < h_max:
         x = 0
         while x < w_max:
             c = arr[y][x]
-            print(color_char(c, near_check(arr, x, y, w_max, h_max)), end='')
+            print(color_char(c, near_check(dat, x, y)), end='')
             x += 1
         print(f" {step}", end='')
         print('\n', end='')
@@ -54,10 +56,11 @@ def print_grid(arr, w_max, h_max):
         step += 1
     print('\n', end='')
 
-def print_board(arr, h_max):
+def print_board(dat):
+    arr, h_max = dat.arr, dat.h_max
     step = 0
     for row in arr:
-        for c in row: print(color_char(c, near_check(arr, x, y, w_max, h_max)), end='')
+        for c in row: print(color_char(c, near_check(dat, x, y)), end='')
         print(f" {h_max - step}", end='')
         print('\n', end='')
         step += 1
@@ -67,7 +70,8 @@ def print_board(arr, h_max):
         step += 1
     print('\n', end='')
 
-def near_check(arr, cx, cy, w_max, h_max):
+def near_check(dat, cx, cy):
+    arr, w_max, h_max = dat.arr, dat.w_max, dat.h_max
     if arr[cy][cx] in {'P'}:
         if (arr[cy - (cy != 0)][cx - (cx != 0)] == 'K' or
             arr[cy - (cy != 0)][cx + (cx < w_max)] == 'K'):
@@ -102,7 +106,8 @@ def color_char(char, check):
     output = f"{color}{char}{colors.reset}"
     return output
 
-def draw_line(arr, k, cx, cy):
+def draw_line(dat, cx, cy):
+    arr, k = dat.arr, dat.k
     if cx == k[0]: line = '|'
     elif cy == k[1]: line = '-'
     elif (cx < k[0] and cy < k[1]) or (cx > k[0] and cy > k[1]): line = '\\'

@@ -4,8 +4,17 @@ from color import colors
 from board import check_board, create_grid, print_grid, print_board, draw_line
 
 # Finally, bonus mode. Strict guy won't complain about multiple functions right?
-    
-def step_check(arr, w_max, h_max, k):
+
+class data:
+    w = 0
+    h = 0
+    w_max = 0
+    h_max = 0
+    k = [0, 0]
+    arr = [0]
+
+def step_check(dat):
+    arr, w_max, h_max, k = dat.arr, dat.w_max, dat.h_max, dat.k
     checkmate = 0
 
     l_max, r_max = k[0], w_max - (k[0] + 1)
@@ -22,7 +31,7 @@ def step_check(arr, w_max, h_max, k):
         for _ in range(directions):
             x += dx; y += dy
             if not (0 <= x < w_max and 0 <= y < h_max): break
-            if arr[y][x] in {'R', 'Q'}: checkmate = 1; print(f"Straight Check arr[{y}][{x}] = {arr[y][x]}"); draw_line(arr, k, x, y); break
+            if arr[y][x] in {'R', 'Q'}: checkmate = 1; print(f"Straight Check arr[{y}][{x}] = {arr[y][x]}"); draw_line(dat, x, y); break
             elif arr[y][x] != '.': break
 
     for dx, dy, directions in [(-1, -1, min(l_max, u_max)), (1, -1, min(r_max, u_max)),
@@ -31,22 +40,23 @@ def step_check(arr, w_max, h_max, k):
         for _ in range(directions):
             x += dx; y += dy
             if not (0 <= x < w_max and 0 <= y < h_max): break
-            if arr[y][x] in {'B', 'Q'}: checkmate = 1; print(f"Diagonal Check arr[{y}][{x}] = {arr[y][x]}"); draw_line(arr, k, x, y); break
+            if arr[y][x] in {'B', 'Q'}: checkmate = 1; print(f"Diagonal Check arr[{y}][{x}] = {arr[y][x]}"); draw_line(dat, x, y); break
             elif arr[y][x] != '.': break
     return checkmate
 
 def checkmate(board):
 # try:
-    w_max, h_max, result = check_board(board)
+    dat = data()
+    dat.w_max, dat.h_max, result = check_board(board)
     if result == False:
         return
 
-    arr, k = create_grid(board, w_max, h_max)
+    dat.arr, dat.k = create_grid(board, dat)
 
-    checkmate = step_check(arr, w_max, h_max, k)
+    checkmate = step_check(dat)
 
     if checkmate == 1:
-        print_grid(arr, w_max, h_max)
+        print_grid(dat)
         return print(colors.fg.green, "Success", colors.reset, sep="")
     elif checkmate == 0:
         return print(colors.fg.red, "Fail", colors.reset, sep="")
