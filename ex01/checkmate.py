@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from color import colors
+from animation import lining, typing
 from board import check_board, create_grid, print_grid, print_board, draw_line
 
 # Finally, bonus mode. Strict guy won't complain about multiple functions right?

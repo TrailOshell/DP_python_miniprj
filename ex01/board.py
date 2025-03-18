@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
+import time
 from color import colors
+from animation import lining, typing
 
 def check_board(board):
     if 'K' not in board:
@@ -68,6 +70,7 @@ def print_board(dat):
             print(color_char(c, near_check(dat, x, y)), end='')
             x += 1
         print(f" {h_max - step}\n", end='')
+        time.sleep(10000/1000000)
         y += 1
         step += 1
     step = 0
