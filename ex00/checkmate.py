@@ -15,10 +15,12 @@ def checkmate(board):
     for c in board:
         if c == '\n':
             if w != w_max:
-                return f"ERROR: uneven board size (last width = {w}, max width = {w_max})"
+                return print(f"ERROR: uneven board size (last width = {w}, max width = {w_max})")
             h += 1; w = 0
         else: w += 1
     h += 1; h_max = h
+    if w != h:
+        return print(f"ERROR: the board is not square (width = {w}, height = {h})")
 
     arr = [[0 for i in range(w)] for j in range(h)]
     k = [0, 0]; w, h = 0, 0
