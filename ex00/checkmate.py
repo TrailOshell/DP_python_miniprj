@@ -5,8 +5,7 @@ def checkmate(board):
 # try:
     if 'K' not in board:
         return print("ERROR: 'K' not in board")
-    elif board.count('K') > 1:
-        return print("ERROR: multiple 'K' found")
+    elif board.count('K') > 1: return print("ERROR: multiple 'K' found")
 
     w, h = 0, 0
     w_max, h_max = 0, 0

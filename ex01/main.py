@@ -1,13 +1,17 @@
 #!/usr/bin/python3
 
 import sys
+import color
+import animation
 from checkmate import checkmate
-from color import colors
 
 def main():
     for fpath in sys.argv[1:]:
         file = open(fpath, "r")
-        print(f"{colors.fg.pink}reading file: {colors.reset}{fpath}")
+        color.change(color.fg.pink)
+        animation.typing(f"reading file: ", end="")
+        color.change(color.style.reset)
+        animation.typing(f"{fpath}")
         checkmate(file.read())
 
 if __name__ == "__main__":

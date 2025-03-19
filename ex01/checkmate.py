@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-from color import colors
-from animation import lining, typing
+import color
+import animation
 from board import check_board, create_grid, print_grid, print_board, draw_line
 
 # Finally, bonus mode. Strict guy won't complain about multiple functions right?
@@ -56,10 +56,15 @@ def checkmate(board):
 
     checkmate = step_check(dat)
 
+    delay = 30000
     if checkmate == 1:
         print_board(dat)
-        return print(colors.fg.green, "Success", colors.reset, sep="")
+        color.change(color.fg.green)
+        animation.typing(f"Success!!! 🎉", delay)
+        color.change(color.style.reset)
     elif checkmate == 0:
-        return print(colors.fg.red, "Fail", colors.reset, sep="")
+        color.change(color.fg.red)
+        animation.typing(f"Fail... 💀", delay)
+        color.change(color.style.reset)
 # except:
-    return print(f"{colors.fg.yellow}Error{colors.reset}")
+    #return print(f"{color.fg.yellow}Error{color.style.reset}")

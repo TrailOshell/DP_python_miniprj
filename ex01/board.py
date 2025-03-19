@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 
 import time
-from color import colors
-from animation import lining, typing
+import color
+import animation
 
 def check_board(board):
     if 'K' not in board:
-        print(f"{colors.fg.yellow}ERROR: 'K' not in board{colors.reset}"); return 0, 0, False
+        color.change(color.fg.yellow); animation.typing(f"ERROR: 'K' not in board"); color.change(color.style.reset)
+        return 0, 0, False
     elif board.count('K') > 1:
-        print(f"{colors.fg.yellow}ERROR: multiple 'K' found{colors.reset}"); return 0, 0, False
+        color.change(color.fg.yellow); animation.typing(f"ERROR: multiple 'K' found"); color.change(color.style.reset)
+        return 0, 0, False
     
     w, h = 0, 0
     w_max, h_max = 0, 0
@@ -18,7 +20,7 @@ def check_board(board):
     for c in board:
         if c == '\n':
             if w != w_max:
-                print (f"{colors.fg.yellow}ERROR: uneven board size (last width = {w}, max width = {w_max}){colors.reset}")
+                color.change(color.fg.yellow); animation.typing(f"ERROR: uneven board size (last width = {w}, max width = {w_max})"); color.change(color.style.reset)
                 return 0, 0, False
             h += 1; w = 0
         else: w += 1
@@ -115,17 +117,17 @@ def near_check(dat, cx, cy):
     return False
 
 def color_char(char, check):
-    color = colors.reset
+    color_c = color.style.reset
     if char in {'-', '|', '\\', '/'} or check == True:
-        if char in {'P', 'R', 'B', 'Q'}: color = f"{colors.fg.yellow}{colors.bg.orange}"
-        else: color = colors.fg.yellow
-    elif char == 'K': color = f"{colors.fg.black}{colors.bg.lightgrey}"
-    elif char == 'P': color = f"{colors.fg.cyan}"
-    elif char == 'R': color = f"{colors.fg.cyan}"
-    elif char == 'B': color = f"{colors.fg.cyan}"
-    elif char == 'Q': color = f"{colors.fg.cyan}"
+        if char in {'P', 'R', 'B', 'Q'}: color_c = f"{color.fg.yellow}{color.bg.orange}"
+        else: color_c = color.fg.yellow
+    elif char == 'K': color_c = f"{color.fg.black}{color.bg.lightgrey}"
+    elif char == 'P': color_c = f"{color.fg.cyan}"
+    elif char == 'R': color_c = f"{color.fg.cyan}"
+    elif char == 'B': color_c = f"{color.fg.cyan}"
+    elif char == 'Q': color_c = f"{color.fg.cyan}"
 
-    output = f"{color}{char}{colors.reset}"
+    output = f"{color_c}{char}{color.style.reset}"
     return output
 
 def draw_line(dat, cx, cy):
