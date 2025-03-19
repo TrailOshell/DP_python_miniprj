@@ -59,8 +59,8 @@ def checkmate(board):
     delay = 30000
     if checkmate == 1:
         print_board(dat)
-        animation.typing(f"Success!!! 🎉", delay, clr=color.fg.green, end="")
+        animation.typing(f"Success!!! 🎉", delay, clr=color.fg.green)
     elif checkmate == 0:
-        animation.typing(f"Fail... 💀", delay, clr=color.fg.red, end="")
+        animation.typing(f"Fail... 💀", delay, clr=color.fg.red)
 # except:
     #return print(f"{color.fg.yellow}Error{color.style.reset}")
