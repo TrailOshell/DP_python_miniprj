@@ -23,7 +23,7 @@
 - [ ] "Create a program that takes the best move for a checkmate."
     - [ ] recursive is probably the way. let it loop and find shortest possible steps(or turns?) for checkmate
 - [ ] a chess game
-    - [ ] king slayer: player use other pieces to checkmate the king
+    - [ ] king checker: player use other pieces to checkmate the king
     - [ ] king mode: player survive as the lone king
     - [ ] actual chess game: make a traditional chess game
 
@@ -31,12 +31,13 @@
 - [x] use '-' '|' '\' '/' to draw checkmate line
 - [x] add color
 - [x] grid name
-    ... .. ....10
-    ... .. ....9
-    .         
-    .         
-    ... .. ....2
-    ... .. ....1
-    abc .. zab?
-            aa
+    ... .. .......10
+    ... .. .......9
+    .            
+    .            
+    ... .. .......2
+    ... .. .......1
+    abc .. zaaaaa?
+            abcde
+
 - [ ] trim the output of checkmate result if it's too big
