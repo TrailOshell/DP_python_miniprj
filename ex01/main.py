@@ -8,10 +8,8 @@ from checkmate import checkmate
 def main():
     for fpath in sys.argv[1:]:
         file = open(fpath, "r")
-        color.change(color.fg.pink)
-        animation.typing(f"reading file: ", end="")
-        color.change(color.style.reset)
-        animation.typing(f"{fpath}")
+        animation.typing(f"reading file: ", clr=color.fg.pink, end="")
+        animation.typing(f"{fpath}", end="\n")
         checkmate(file.read())
 
 if __name__ == "__main__":

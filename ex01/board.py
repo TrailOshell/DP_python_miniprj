@@ -6,10 +6,10 @@ import animation
 
 def check_board(board):
     if 'K' not in board:
-        color.change(color.fg.yellow); animation.typing(f"ERROR: 'K' not in board"); color.change(color.style.reset)
+        animation.typing(f"ERROR: 'K' not in board", clr=color.fg.yellow)
         return 0, 0, False
     elif board.count('K') > 1:
-        color.change(color.fg.yellow); animation.typing(f"ERROR: multiple 'K' found"); color.change(color.style.reset)
+        animation.typing(f"ERROR: multiple 'K' found", clr=color.fg.yellow)
         return 0, 0, False
     
     w, h = 0, 0
@@ -20,7 +20,7 @@ def check_board(board):
     for c in board:
         if c == '\n':
             if w != w_max:
-                color.change(color.fg.yellow); animation.typing(f"ERROR: uneven board size (last width = {w}, max width = {w_max})"); color.change(color.style.reset)
+                animation.typing(f"ERROR: uneven board size (last width = {w}, max width = {w_max})", clr=color.fg.yellow)
                 return 0, 0, False
             h += 1; w = 0
         else: w += 1
